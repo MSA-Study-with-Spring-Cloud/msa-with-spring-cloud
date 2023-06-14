@@ -5,9 +5,9 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class FilterConfig {
-    @Bean
+    //@Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder){
         return builder.routes() //r이라는 매개변수가 있을때 어떤 동작을 할 것인지 지정
                 .route(r -> r.path("/first-service/**")
