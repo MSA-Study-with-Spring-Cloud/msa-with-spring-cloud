@@ -31,10 +31,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         //users로 들어오는 경로에 대해서는 인증작업 없이 사용 가능
         //http.authorizeHttpRequests().antMatchers("/users/**").permitAll();
-        http.authorizeRequests().antMatchers("/**")
+        http.authorizeRequests().antMatchers("/error/**").permitAll()
+                .antMatchers("/**")
                 .hasIpAddress("192.168.35.151")
                 .and()
                 .addFilter(getAuthenticaionFilter());
+
         http.headers().frameOptions().disable();
     }
 
