@@ -24,6 +24,7 @@ spring:
 #          uri: lb://USER-SERVICE
 #          predicates:
 #            - Path=/user-service/**
+        #이 아래부분 필터 넣은 거가 route 변경 한 부분임
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:

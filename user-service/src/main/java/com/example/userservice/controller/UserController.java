@@ -34,7 +34,7 @@ public class UserController {
         this.env = env;
         this.userService=userService;
     }
-
+//로그인일는 함수를 만들지 않았지만 스프링 시큐리티르 사요하면 기본적으로 로그인은 기본 제공이 됨.
     @GetMapping("/health_check")
     public String status(){
         return String.format("It's Working in User Service on PORT %s", env.getProperty("local.server.port"));

@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //로그인시 네번째로 수행.
         UserEntity userEntity=userRepository.findByEmail(username);
         if(userEntity==null){
             throw new UsernameNotFoundException(username);

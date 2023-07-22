@@ -2,9 +2,11 @@ package com.example.userservice.security;
 
 import com.example.userservice.vo.RequestLogin;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -14,11 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+@Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
+        //로그인시 세번째로 수행되는 과정으로 이 함수가 사용자가 로그인을 하게되면 제일 먼저 시도되는 함수
         try {
             RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
             //inputstream으로 받은 이유는 전달 시켜주려고 하는 로그인의 값은 POST 형태인데 그럼 requestParameter을 받을 수 없기 때문에,
@@ -43,5 +46,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
+        //로그인시 다섯번째로 수행
+        log.debug(((User)authResult.getPrincipal()).getUsername());
     }
 }

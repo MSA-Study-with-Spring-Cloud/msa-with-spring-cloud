@@ -16,6 +16,7 @@ import javax.servlet.Filter;
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+    //로그인시 두번째로 여기 관련딘 클래스들이 메모리에 올라감
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private Environment env;
