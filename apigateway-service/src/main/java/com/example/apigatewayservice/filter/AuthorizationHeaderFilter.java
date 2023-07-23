@@ -29,7 +29,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 
     //login->token->user(with token)->header(includ token)
     @Override
-    public GatewayFilter apply(AuthorizationHeaderFilter.Config config) {
+    public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
 
