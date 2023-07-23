@@ -31,3 +31,8 @@ greeting:
 logging:
   level:
     com.example.userservice: DEBUG
+
+token:
+#  60*60*24*1000 = 하루짜리 토큰
+  expiration_time: 86400000
+  secret: user_token
